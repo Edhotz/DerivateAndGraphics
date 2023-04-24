@@ -5,7 +5,6 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 
 import javax.swing.*;
-import java.util.Scanner;
 
 public class App extends Application {
 
@@ -15,22 +14,11 @@ public class App extends Application {
 
     @Override
     public void start(Stage primaryStage) {
-        Derivadas derivadas = new Derivadas();
 
-        System.out.println("Insira a funcao a derivar");
-
-        String funcao = JOptionPane.showInputDialog("Insira a derivada");
-
-        derivadas.setFuncionADerivar(funcao);
-        derivadas.derivar();
-
-        String result = derivadas.getFuncionDerivada();
-
-        JOptionPane.showMessageDialog(null, "Valor da derivada: " +  result);
-
-        Funcao f = x -> Double.parseDouble(derivadas.getFuncionDerivada());
+        Funcao f = x -> -4 / Math.pow(x - 4, 2);
         Grafico g = new Grafico();
-        g.plotFuncao(f, 0, 2*Math.PI, "Seno");
+        g.plotFuncao(f, 0, 2*Math.PI, "Assintota Vertical n = 4");
         g.show(primaryStage);
     }
+
 }
