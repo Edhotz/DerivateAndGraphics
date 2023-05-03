@@ -3,7 +3,6 @@ package br.com.mauricioborges.graficos;
 import br.com.mauricioborges.graficos.math.Funcao;
 import javafx.application.Application;
 import javafx.scene.control.Alert;
-import javafx.scene.control.TextField;
 import javafx.scene.control.TextInputDialog;
 import javafx.stage.Stage;
 
@@ -18,9 +17,9 @@ public class App extends Application {
     @Override
     public void start(Stage primaryStage) {
         TextInputDialog dialog = new TextInputDialog();
-        dialog.setTitle("Number Input");
-        dialog.setHeaderText("Please enter a number:");
-        dialog.setContentText("Number:");
+        dialog.setTitle("Calculo da derivada");
+        dialog.setHeaderText("Insira a derivada de uma funcao:");
+        dialog.setContentText("f(x): ");
 
         Optional<String> result = dialog.showAndWait();
         if (result.isPresent()) {
@@ -33,9 +32,17 @@ public class App extends Application {
         }
 
         String value = result.get();
+
+        Derivadas derivadas = new Derivadas();
+        derivadas.setFuncionADerivar(value);
+        derivadas.derivar();
+
+        String derivateResult = derivadas.getFuncionDerivada();
+
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
-        alert.setHeaderText("Resultado");
-        alert.setContentText(value);
+        alert.setTitle("Resultado da derivada");
+        alert.setHeaderText(derivateResult);
+        alert.setContentText("Resultado da derivada " + " -4 /(x-4)^2 ");
         alert.showAndWait();
 
 
